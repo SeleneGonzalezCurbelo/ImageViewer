@@ -15,7 +15,7 @@ public class Main {
         }
         
         private static FileImageLoader createImageLoader() {
-            File file = new File("..\\ImageViewer\\src\\images");
+            File file = new File("src\\images\\");
             return new FileImageLoader(file);
         }
 }
