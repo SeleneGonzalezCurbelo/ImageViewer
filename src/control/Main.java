@@ -12,6 +12,7 @@ public class Main {
             MainFrame mainFrame = new MainFrame();
             ImagePresenter presenter = new ImagePresenter(mainFrame, image);
             mainFrame.setPresenter(presenter);
+            mainFrame.getImageDisplay().show(image);
             image.close();
         }
         
