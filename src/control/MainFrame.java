@@ -15,46 +15,17 @@ import ui.swing.SwingImageDisplay;
 public class MainFrame extends JFrame{
     private ImageDisplay imageDisplay;
     private ImagePresenter presenter;
+    private Toolbar toolbar;
 
     public MainFrame() throws IOException {
         this.setTitle("Image Viewer");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(800,600);
         this.setLocationRelativeTo(null);
-        this.getContentPane().add(imageDisplay());
-        this.getContentPane().add(toolBar(),BorderLayout.SOUTH);
+        this.getContentPane().add(imageDisplay(), BorderLayout.CENTER);
+        this.toolbar = new Toolbar(this);
+        this.toolbar.init();
         this.setVisible(true);
-    }
-    
-    private JPanel toolBar(){
-        JPanel panel = new JPanel();
-        panel.add(prevButton());
-        panel.add(nextButton());
-        return panel;
-    }
-    
-    private JButton nextButton(){
-        JButton button = new JButton(">");
-        button.addActionListener(nextImage());
-        return button;
-    }
-    
-    private ActionListener nextImage(){
-        return (ActionEvent e) -> {
-            imageDisplay.show(imageDisplay.current().next());
-        };
-    }
-    
-    private JButton prevButton(){
-        JButton button = new JButton("<");
-        button.addActionListener(prevImage());
-        return button;
-    }
-    
-    private ActionListener prevImage(){
-        return (ActionEvent e) -> {
-            imageDisplay.show(imageDisplay.current().prev());
-        };
     }
     
     private JPanel imageDisplay() throws IOException{
